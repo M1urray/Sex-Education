@@ -422,7 +422,8 @@ DEFAULT_FEATURE_FLAGS.update(
 )
 
 # This is merely a default.
-FEATURE_FLAGS: Dict[str, bool] = {}
+FEATURE_FLAGS: Dict[str, bool] = {
+ "ALERT_REPORTS": True}
 
 # A function that receives a dict of all feature flags
 # (DEFAULT_FEATURE_FLAGS merged with FEATURE_FLAGS)
@@ -1083,6 +1084,17 @@ EMAIL_REPORTS_USER = "admin"
 #   Limitations: can be buggy at times
 # chrome:
 #   Requires: headless chrome
+WEBDRIVER_TYPE = "chrome"
+WEBDRIVER_OPTION_ARGS = [
+    "--force-device-scale-factor=2.0",
+    "--high-dpi-support=2.0",
+    "--headless",
+    "--disable-gpu",
+    "--disable-dev-shm-usage",
+    "--no-sandbox",
+    "--disable-setuid-sandbox",
+    "--disable-extensions",
+]
 #   Limitations: unable to generate screenshots of elements
 WEBDRIVER_TYPE = "firefox"
 
@@ -1111,6 +1123,7 @@ WEBDRIVER_BASEURL = "http://0.0.0.0:8080/"
 WEBDRIVER_BASEURL_USER_FRIENDLY = WEBDRIVER_BASEURL
 # Time selenium will wait for the page to load and render for the email report.
 EMAIL_PAGE_RENDER_WAIT = int(timedelta(seconds=30).total_seconds())
+
 
 # Send user to a link where they can report bugs
 BUG_REPORT_URL = None
